@@ -1,0 +1,40 @@
+<div class="card border-primary mb-3">
+  <div class="card-header">Bonos</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de Bonos por comprador</h5>
+    <div class="my-2 text-left">                            <!--ruta que se creo en app-modules y nos redirecciona a form-->
+      <button class="btn btn-primary btn-rounded" type="button" >Nuevo Bono</button>
+    </div>
+    <div class="my-2 text-left">                            <!--ruta que se creo en app-modules y nos redirecciona a form-->
+      <input type="text" class="form-control" name="filterDirecciones" placeholder="Buscar . . . ">
+    </div>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Clave</th>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comprador of compradores">
+          <td>{{ comprador.idComprador }}</td>
+          <td>{{ comprador.clave }}</td><!--interpolacion-->
+          <td>{{ comprador.nombre }}</td>
+          <td>{{ comprador.apellidoPaterno }}</td>
+          <td>{{ comprador.apellidoMaterno }}</td>
+          <td>
+            <button type="button" name="edit" class="btn btn-primary btn-sm">Editar</button>
+          </td>
+          <td>
+            <button type="button" name="eliminar" class="btn btn-warning btn-sm">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

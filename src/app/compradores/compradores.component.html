@@ -1,0 +1,44 @@
+
+<div class="card">
+  <h5>Implicit Pagination</h5>
+  <p-table [value]="compradores" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
+  responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+  [rowsPerPageOptions]="[10,25,50]" [scrollable]="true" scrollHeight="400px" scrollDirection="both">
+      <ng-template pTemplate="header">
+          <tr>
+            <th style="width:50px">Id</th>
+            <th style="width:50px">Clave</th>
+            <th style="width:100px">Nombre</th>
+            <th style="width:100px">Apellido Paterno</th>
+            <th style="width:100px">Apellido Materno</th>
+            <th style="width:70px">Bonos</th>
+            <th style="width:70px">Eliminar</th>
+            <th style="width:70px">Editar</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-comprador>
+          <tr>
+            <td style="width:50px">{{ comprador.idComprador }}</td>
+            <td style="width:50px">{{ comprador.clave }}</td>
+            <td style="width:100px">{{ comprador.nombre }}</td>
+            <td style="width:100px">{{ comprador.apellidoPaterno }}</td>
+            <td style="width:100px">{{ comprador.apellidoMaterno }}</td>
+            <td style="width:70px">
+              <button type="button" name="bonos" class="btn btn-primary btn-sm">Bonos</button>
+            </td>
+            <td style="width:70px">
+              <button type="button" name="edit" class="btn btn-warning btn-sm">Editar</button>
+            </td>
+            <td style="width:70px">
+              <button type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
+            </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="paginatorleft">
+          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+      </ng-template>
+      <ng-template pTemplate="paginatorright">
+          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+      </ng-template>
+  </p-table>
+</div>

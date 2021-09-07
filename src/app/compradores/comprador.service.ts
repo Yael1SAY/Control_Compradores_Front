@@ -1,0 +1,69 @@
+import { Injectable } from '@angular/core';
+import { Comprador } from '../model/comprador';
+import { HttpClient,  HttpHeaders} from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { AuthService } from '../usuarios/auth.service';
+import { map, catchError, tap } from 'rxjs/operators';
+import swal from 'sweetalert2';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CompradorService {
+  private urlEndPoint1: string = 'http://localhost:8080/comprador/';
+  private urlEndPoint2: string = 'http://localhost:8080/servicio/';
+  private httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
+
+  constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
+
+  private agregarAuthorizationHeader(){
+    let token = this.authService.token;
+    if(token != null){
+      return this.httpHeader.append('Authorization', 'Bearer ' + token);
+    }
+    return this.httpHeader;
+  }
+
+  private isNoAutorizado(e: any): boolean{
+    if(e.status==401){//realiza la validacion cuando no se a autenticado
+      if(this.authService.isAuthtenticated!){
+        this.authService.logout();
+      }
+      swal.fire('Acceso Denegado','Se requiere iniciar sesión','warning')
+      this.router.navigate(['/login'])
+      return true;
+    }
+    if(e.status==403){//Acceso denegado por el tipo de rol
+      swal.fire('Acceso Denegado','Hola ' + this.authService.comprador.nombre + ' no tienes acceso a este recurso','warning')
+      this.router.navigate(['/clientes'])
+      return true;
+    }
+    return false;
+  }
+
+  obtenerCompradores(rol: string): Observable<Comprador[]>{
+    return this.http.get<Comprador[]>(this.urlEndPoint1, {headers: this.agregarAuthorizationHeader()})
+    .pipe(
+      catchError(e =>{
+        if(e.status==0){
+          this.router.navigate(['/login']);
+          swal.fire("Servicio fuera de linea", 'No es posible conectar al servicio, contacte al administrador','error');
+          return throwError(e);
+        }
+        if(e.status==401){//realiza la validacion cuando no se a autenticado
+          this.router.navigate(['/login'])
+          return throwError(e);
+        }
+        //return map(response => response as Comprador[])
+        return throwError(e);
+      })
+    );
+  }
+
+
+
+
+
+
+}
