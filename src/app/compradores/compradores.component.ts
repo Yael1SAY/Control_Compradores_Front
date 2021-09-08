@@ -16,7 +16,7 @@ export class CompradoresComponent implements OnInit {
   constructor(private compradorService: CompradorService, private authService: AuthService) { }
 
   ngOnInit(): void {
-    roles: this.authService.comprador.roles
+    //roles: this.authService.comprador.roles
     this.compradorService.obtenerCompradores(this.authService.getRol()).subscribe(
       compradores => this.compradores = compradores
     );

@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 import { AuthService } from '../usuarios/auth.service';
 import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
+import { environment } from 'src/environments/environment';
+
+const URL = environment.url;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompradorService {
-  private urlEndPoint1: string = 'http://localhost:8080/comprador/';
-  private urlEndPoint2: string = 'http://localhost:8080/servicio/';
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
@@ -43,7 +44,7 @@ export class CompradorService {
   }
 
   obtenerCompradores(rol: string): Observable<Comprador[]>{
-    return this.http.get<Comprador[]>(this.urlEndPoint1, {headers: this.agregarAuthorizationHeader()})
+    return this.http.get<Comprador[]>(`${URL}`, {headers: this.agregarAuthorizationHeader()})
     .pipe(
       catchError(e =>{
         if(e.status==0){
@@ -60,10 +61,4 @@ export class CompradorService {
       })
     );
   }
-
-
-
-
-
-
 }

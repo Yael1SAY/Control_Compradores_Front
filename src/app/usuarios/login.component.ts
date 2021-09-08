@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         this.authService.guardarToken(response.access_token);
 
         let comprador = this.authService.comprador;//es el metodo getter del service y se maneja como atributo
-        this.router.navigate(['/compradores']);
+        this.router.navigate(['/inicio']);
         swal.fire('Login', 'Hola ' + comprador.nombre + ', has iniciado sesión con éxito!', 'success');
         },error => {
           if(error.status == 400){

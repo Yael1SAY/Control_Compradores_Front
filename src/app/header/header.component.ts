@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout():void{
-  let clave = this.authService.comprador.clave;
+  let nombre = this.authService.comprador.nombre;
   this.authService.logout();
-  swal.fire('Logout', 'Hola ' + clave + ' has cerrado sesión con éxito', 'success');
+  swal.fire('Logout', 'Hola ' + nombre + ' has cerrado sesión con éxito', 'success');
   this.router.navigate(['/login']);
   }
 

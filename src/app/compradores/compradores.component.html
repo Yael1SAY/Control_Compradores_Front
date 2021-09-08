@@ -1,8 +1,11 @@
-
+<div>
+  <h4 class="card-title font-weight-bold">Lista de Compradores</h4>
+</div>
+<hr class="m-t-0 m-b-10" color="red">
 <div class="card">
-  <h5>Implicit Pagination</h5>
+  <h5>Compradores</h5>
   <p-table [value]="compradores" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
-  responsiveLayout="scroll" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" 
+  responsiveLayout="scroll" currentPageReportTemplate="{first} to {last} of {totalRecords} entries" 
   [rowsPerPageOptions]="[10,25,50]" [scrollable]="true" scrollHeight="400px" scrollDirection="both">
       <ng-template pTemplate="header">
           <tr>

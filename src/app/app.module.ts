@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import {InicioComponent} from './inicio/inicio.component';
 import { LoginComponent } from './usuarios/login.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -20,6 +21,7 @@ import { ProductividadComponent } from './productividad/productividad.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/compradores', pathMatch: 'full'},
+  {path: 'inicio', component: InicioComponent},
   {path: 'compradores', component: CompradoresComponent},
   {path: 'bonos', component: BonosComponent},
   {path: 'login', component: LoginComponent},
