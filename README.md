@@ -1,2 +1,2 @@
-# Control_Compradores_Front
+# Control_Compradores_Web
 Control de empleados en el área de compras
