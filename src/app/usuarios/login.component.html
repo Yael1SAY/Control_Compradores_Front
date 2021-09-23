@@ -1,24 +1,40 @@
-<div class="card border-primary text-center">
-  <div class="card-header">{{titulo}}</div>
-  <div class="card-body">
+<div class="container" id="centrador">
+  <div class="row">
+    <div class="form-group col-sm-4">
+      <div class="card text-center" style="width: 25rem;">
+        <img src="./assets/Images/truper.ico" class="img-responsive" style="height: 150px; width: 250px; margin: auto;">
+        <div class="card-header">{{titulo}}</div>
+        <div class="card-body" style="text-align: center;">
+          <br>
+          <form method="post">
 
-    <form method="post">
+            <div class="form-group ">
+              <input [(ngModel)]="usuario!.nombreUsuario" type="text" class="form-control" name="username" id="username"
+                placeholder="Usuario" autofocus required>
+            </div>
+            <br>
+            <div class="form-group col-sm-12">
+              <input [(ngModel)]="usuario!.password" type="password" class="form-control" name="password" id="password"
+                placeholder="Contraseña" required>
+            </div>
+            <br>
+            <div class="form-group col-sm-12">
+              <button pButton (click)='login()' type="button" label="INGRESAR"
+                class="p-button-outlined p-button-warning"></button>
+            </div>
 
-      <div class="form-group col-sm-8">
-        <input [(ngModel)]="comprador!.clave" type="text" class="form-control"
-        name="username" id="username" placeholder="Clave Usuario" autofocus required>
+          </form>
+        </div>
       </div>
-
-      <div class="form-group col-sm-8">
-        <input [(ngModel)]="comprador!.password" type="password" class="form-control"
-        name="password" id="password" placeholder="Contraseña" required>
-      </div>
-
-      <div class="form-group col-sm-8">
-        <input (click)='login()' type="submit" class="btn btn-lg btn-primary btn-block" value="Login">
-      </div>
-
-    </form>
-
+    </div>
   </div>
 </div>
+
+<style>
+  #centrador{
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-color: orangered;
+}
+</style>

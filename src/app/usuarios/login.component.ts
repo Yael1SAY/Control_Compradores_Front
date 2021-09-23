@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Comprador } from '../model/comprador'
+import { Usuario } from '../model/usuario'
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
@@ -11,26 +11,26 @@ import swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   titulo: string = 'Iniciar sesion';
-  comprador: Comprador | undefined;
+  usuario: Usuario | undefined;
 
   constructor(private authService: AuthService, private router: Router) {
-      this.comprador = new Comprador;
+      this.usuario = new Usuario;
    }
 
   ngOnInit(): void {
     if(this.authService.isAuthtenticated()){
-      swal.fire('Login', 'Hola ' + this.authService.comprador.clave + ' ya estas autenticado!' , 'info');
+      swal.fire('Login', 'Hola ' + this.authService.comprador.nombreUsuario + ' ya estas autenticado!' , 'info');
       this.router.navigate(['/clientes']);
     }
   }
 
   login(): void{
       //valida que el usuario y password no esten vacias
-      if(this.comprador!.clave == null || this.comprador!.password == null){
+      if(this.usuario!.nombreUsuario == null || this.usuario!.password == null){
         swal.fire('Error Login', 'Username o Password vacios!', 'error');
       }
       //llama al metodo login del service para autenticarse
-      this.authService.login(this.comprador!).subscribe(response => {
+      this.authService.login(this.usuario!).subscribe(response => {
         //el token se conpone de tres secciones 1. el algoritmo y tipo, 2.datos y payload 3.La fima para verificar
         //let objetoPayload = JSON.parse(atob(response.access_token.split('.')[1]))
         //console.log(objetoPayload);//Split convierte a un arreglo y separa cada secion despues de un '.'

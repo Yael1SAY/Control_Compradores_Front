@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Comprador } from '../model/comprador'
+import { Usuario } from '../model/usuario'
 import { Rol } from '../model/rol';
 
 @Injectable({
@@ -9,19 +9,19 @@ import { Rol } from '../model/rol';
 })
 export class AuthService {
 
-  private _comprador: Comprador | undefined;
+  private _usuario: Usuario | undefined;
   private _token: string | undefined;
 
   constructor(private http: HttpClient) { }
 
-  public get comprador(): Comprador {
-    if (this._comprador != null) {
-      return this._comprador;
-    } else if (this._comprador == null && sessionStorage.getItem('usuario') != null) {
-      this._comprador = JSON.parse(sessionStorage.getItem('usuario')!) as Comprador;
-      return this._comprador!;
+  public get comprador(): Usuario {
+    if (this._usuario != null) {
+      return this._usuario;
+    } else if (this._usuario == null && sessionStorage.getItem('usuario') != null) {
+      this._usuario = JSON.parse(sessionStorage.getItem('usuario')!) as Usuario;
+      return this._usuario!;
     }
-    return new Comprador;
+    return new Usuario;
   }
   public get token(): string {
     if (this._token != null) {
@@ -33,7 +33,7 @@ export class AuthService {
     return null!;
   }
 
-  login(comprador: Comprador): Observable<any> {
+  login(comprador: Usuario): Observable<any> {
     const urlEndPoint = 'http://localhost:8080/oauth/token';
     const credenciales = btoa('angularapp' + ':' + '12345');
     const httpHeaders = new HttpHeaders({
@@ -42,7 +42,7 @@ export class AuthService {
     });
     let params = new URLSearchParams();
     params.set('grant_type', 'password');
-    params.set('username', comprador.clave);
+    params.set('username', comprador.nombreUsuario);
     params.set('password', comprador.password);
 
     return this.http.post<any>(urlEndPoint, params.toString(), { headers: httpHeaders });
@@ -51,17 +51,17 @@ export class AuthService {
   guardarUsuario(accessToken: string): void {
     let payload = this.obtenerPayload(accessToken);
     var listRol: String[] = [];
-    this._comprador = new Comprador();
-    this._comprador.nombre = payload.nombre;
-    this._comprador.apellidoPaterno = payload.apellidoPaterno;
-    this._comprador.apellidoMaterno = payload.apellidoMaterno;
-    this._comprador.clave = payload.user_name;
+    this._usuario = new Usuario();
+    this._usuario.nombre = payload.nombre;
+    this._usuario.apellidoPaterno = payload.apellidoPaterno;
+    this._usuario.apellidoMaterno = payload.apellidoMaterno;
+    this._usuario.nombreUsuario = payload.user_name;
     for (let rol in payload.authorities) {
       listRol.push(payload.authorities[rol])
     }
-    this._comprador.roles = listRol;
+    this._usuario.roles = listRol;
     //almacena los datos del usuario en la sesion
-    sessionStorage.setItem('usuario', JSON.stringify(this._comprador))
+    sessionStorage.setItem('usuario', JSON.stringify(this._usuario))
     //stringify: convierte tipo objeto a JSON
   }
 
@@ -94,13 +94,12 @@ export class AuthService {
         rol = payload.authorities[item];
       }
     }
-    console.log("Rol Usuario: ", rol);
     return rol;
   }
 
   logout(): void {
     this._token = null!;
-    this._comprador = null!;
+    this._usuario = null!;
     sessionStorage.clear;
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('usuario');

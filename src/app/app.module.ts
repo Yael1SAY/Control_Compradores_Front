@@ -18,6 +18,7 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ProductividadComponent } from './productividad/productividad.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const routes: Routes = [
   {path: '', redirectTo: '/compradores', pathMatch: 'full'},
@@ -48,6 +49,9 @@ const routes: Routes = [
     ButtonModule
   ],
   providers: [CompradorService, AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

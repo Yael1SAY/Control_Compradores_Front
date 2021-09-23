@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Comprador } from '../model/comprador';
+import { Usuario } from '../model/usuario';
 import { HttpClient,  HttpHeaders} from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
@@ -43,8 +43,8 @@ export class CompradorService {
     return false;
   }
 
-  obtenerCompradores(rol: string): Observable<Comprador[]>{
-    return this.http.get<Comprador[]>(`${URL}`, {headers: this.agregarAuthorizationHeader()})
+  obtenerCompradores(rol: string): Observable<Usuario[]>{
+    return this.http.get<Usuario[]>(`${URL}`, {headers: this.agregarAuthorizationHeader()})
     .pipe(
       catchError(e =>{
         if(e.status==0){

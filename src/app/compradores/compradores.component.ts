@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Comprador } from '../model/comprador';
+import { Usuario } from '../model/usuario';
 import { CompradorService } from './comprador.service';
 import { AuthService } from '../usuarios/auth.service';
+import { Router } from '@angular/router';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-compradores',
@@ -9,17 +11,22 @@ import { AuthService } from '../usuarios/auth.service';
 })
 export class CompradoresComponent implements OnInit {
 
-  compradores: Comprador[] = [];
+  compradores: Usuario[] = [];
   first = 0;
   rows = 10;
 
-  constructor(private compradorService: CompradorService, private authService: AuthService) { }
+  constructor(private compradorService: CompradorService, private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    //roles: this.authService.comprador.roles
+    if(!this.authService.isAuthtenticated()){
+      this.router.navigate(['/login']);
+    }
+    
     this.compradorService.obtenerCompradores(this.authService.getRol()).subscribe(
       compradores => this.compradores = compradores
     );
+    
   }
     next() {
         this.first = this.first + this.rows;
