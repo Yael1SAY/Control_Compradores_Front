@@ -6,12 +6,15 @@ import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
   titulo: string = 'Iniciar sesion';
   usuario: Usuario | undefined;
+
+  hide = true;
 
   constructor(private authService: AuthService, private router: Router) {
       this.usuario = new Usuario;
@@ -25,8 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(): void{
+    console.log("nombreUsuario: ", JSON.stringify(this.usuario));
+    console.log();
       //valida que el usuario y password no esten vacias
       if(this.usuario!.nombreUsuario == null || this.usuario!.password == null){
+
         swal.fire('Error Login', 'Username o Password vacios!', 'error');
       }
       //llama al metodo login del service para autenticarse
@@ -39,7 +45,8 @@ export class LoginComponent implements OnInit {
         this.authService.guardarToken(response.access_token);
 
         let comprador = this.authService.comprador;//es el metodo getter del service y se maneja como atributo
-        this.router.navigate(['/inicio']);
+        //this.router.navigate(['/inicio']);
+        this.router.navigate(['/pages/inicio']);
         swal.fire('Login', 'Hola ' + comprador.nombre + ', has iniciado sesión con éxito!', 'success');
         },error => {
           if(error.status == 400){

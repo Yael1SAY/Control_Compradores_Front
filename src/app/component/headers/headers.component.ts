@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../usuarios/auth.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/usuarios/auth.service';
 import swal from 'sweetalert2';
+import {LoginComponent} from '../../usuarios/login.component'
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html'
+  selector: 'app-headers',
+  templateUrl: './headers.component.html',
+  styleUrls: ['./headers.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeadersComponent implements OnInit {
   title: string = "Home"
   constructor(public authService: AuthService, private router: Router) {}
+
+  showFiller = false;
 
   ngOnInit(): void {
   }

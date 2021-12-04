@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CompradoresComponent } from '../compradores/compradores.component';
+import { Usuario } from '../model/usuario';
 
 @Component({
   selector: 'app-bonos',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bonos.component.css']
 })
 export class BonosComponent implements OnInit {
+
+  compradores: Usuario [] = [];
 
   constructor() { }
 

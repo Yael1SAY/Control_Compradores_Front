@@ -1,40 +1,71 @@
-<div class="container" id="centrador">
+<br>
+<br>
+<br>
+<div>
   <div class="row">
+    <div class="col-sm-4"></div>
     <div class="form-group col-sm-4">
       <div class="card text-center" style="width: 25rem;">
-        <img src="./assets/Images/truper.ico" class="img-responsive" style="height: 150px; width: 250px; margin: auto;">
-        <div class="card-header">{{titulo}}</div>
-        <div class="card-body" style="text-align: center;">
-          <br>
-          <form method="post">
+        <div class="container"></div>
+        <img src="./assets/Images/truper.ico" class="img-responsive" id="imgStyle">
+        <div>
+          <p id="titulo">{{titulo}}</p>
+        </div>
 
-            <div class="form-group ">
-              <input [(ngModel)]="usuario!.nombreUsuario" type="text" class="form-control" name="username" id="username"
-                placeholder="Usuario" autofocus required>
+        <div class="card-body" style="text-align: center;">
+          <form method="post">
+            <div class="form-group col-sm-12">
+              <div style="font-size: 13px;">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Usuario</mat-label>
+                  <input matInput [(ngModel)]="usuario!.nombreUsuario" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+                <!-- <input [(ngModel)]="usuario!.nombreUsuario" type="text" class="form-control" name="username"
+                  id="username" placeholder="Usuario" autofocus required> -->
+              </div>
+            </div>
+            <div class="form-group col-sm-12">
+              <div style="font-size: 13px;">
+                <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Ingrese su contraseña</mat-label>
+                  <input matInput [type]="hide ? 'password' : 'text'" placeholder="password" type="password" required
+                    id="password" name="password" [(ngModel)]="usuario!.password" [ngModelOptions]="{standalone: true}">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error></mat-error>
+                </mat-form-field>
+              </div>
+              <!-- <input [(ngModel)]="usuario!.password" type="password" class="form-control" name="password" id="password"
+                placeholder="Contraseña" required> -->
+            </div>
+            <div class="form-group text-center">
+              <button (click)="login()" class="btn btn-block btn-rounded btn-success waves-effect waves-light example-full-width"
+                id="cssButtonIngresar">
+                <i class="mdi mdi-login"></i>
+                Iniciar Sesión
+              </button>
             </div>
             <br>
-            <div class="form-group col-sm-12">
-              <input [(ngModel)]="usuario!.password" type="password" class="form-control" name="password" id="password"
-                placeholder="Contraseña" required>
+            <div class="form-group text-center">
+              <button (click)="login()" class="btn btn-block btn-rounded btn-success waves-effect waves-light example-full-width"
+                id="cssButtonRegistrar">
+                <i class="mdi mdi-login"></i>
+                Registrarse
+              </button>
             </div>
-            <br>
-            <div class="form-group col-sm-12">
-              <button pButton (click)='login()' type="button" label="INGRESAR"
-                class="p-button-outlined p-button-warning"></button>
-            </div>
+            <!-- <div class="form-group col-sm-12">
+                <button pButton (click)='login()' type="button" label="INGRESAR"
+                  class="p-button-outlined p-button-warning"></button>
+              </div> -->
 
           </form>
         </div>
+
       </div>
+    </div>
+    <div class="col-sm-4">
     </div>
   </div>
 </div>
-
-<style>
-  #centrador{
-  position: relative;
-  width: 400px;
-  height: 400px;
-  background-color: orangered;
-}
-</style>

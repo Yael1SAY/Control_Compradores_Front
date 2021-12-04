@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="pages/inicio">
+        <img src="./assets/Images/truper.ico" style="height: 80px; width: 200px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item" *ngIf="authService.isAuthtenticated()">
+            <a class="nav-link" routerLink="/pages/inicio">Inicio</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.isAuthtenticated()">
+            <a class="nav-link" routerLink="/compradores">Compradores</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.isAuthtenticated() && authService.getRol() == 'ROLE_ADMIN'">
+            <a class="nav-link" routerLink="/bonos">Bonos</a>
+          </li>
+          <li class="nav-item" *ngIf="authService.isAuthtenticated() && authService.getRol() == 'ROLE_ADMIN'">
+            <a class="nav-link" routerLink="/productividad">Productividad</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <ul class="navbar-nav mr-right">
+            <!-- <li *ngIf="!authService.isAuthtenticated()">
+              <a [routerLink]="['/login']" class="btn btn-outline-primary">Iniciar sesión</a>
+            </li> -->
+            <li *ngIf="authService.isAuthtenticated()" class="dropdown">
+              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{authService.comprador.nombre}} {{authService.comprador.apellidoPaterno}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <button (click)='logout()' class="dropdown-item" type="submit">Cerrar sesión</button>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </nav>
