@@ -16,23 +16,22 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { CompradoresComponent } from './pages/compradores/compradores.component';
 import { CompradorService } from './pages/compradores/comprador.service';
 import { BonosComponent } from './pages/bonos/bonos.component';
-import { AuthService } from './pages/login/auth.service';
+import { AuthService } from './login/auth.service';
 import { ProductividadComponent } from './pages/productividad/productividad.component';
 import { InicioComponent } from '../app/pages/inicio/inicio.component';
 import { HeadersComponent } from '../../src/app/component/headers/headers.component';
-//import { routes } from '../app/pages/pages.routing'
 
 
 const routes: Routes = [
-  {path: '', redirectTo: '/compradores', pathMatch: 'full'},
+  {path: '', redirectTo: 'pages/compradores', pathMatch: 'full'},
   {path: 'pages/compradores', component: CompradoresComponent},
   {path: 'pages/bonos', component: BonosComponent},
-  {path: 'pages/login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'pages/productividad', component: ProductividadComponent},
   {path: 'pages/inicio', component: InicioComponent}
   //{path: 'routes', redirectTo: '/pages', pathMatch: 'full'}

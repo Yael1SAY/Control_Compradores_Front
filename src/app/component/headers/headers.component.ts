@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/pages/login/auth.service';
+import { AuthService } from 'src/app/login/auth.service';
 import swal from 'sweetalert2';
-import {LoginComponent} from '../../pages/login/login.component'
+import {LoginComponent} from '../../login/login.component'
 
 @Component({
   selector: 'app-headers',

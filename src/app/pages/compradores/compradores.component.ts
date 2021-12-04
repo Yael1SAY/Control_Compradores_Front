@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../model/usuario';
 import { CompradorService } from './comprador.service';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../../login/auth.service';
 import { Router } from '@angular/router';
-import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-compradores',

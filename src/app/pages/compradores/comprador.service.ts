@@ -3,7 +3,7 @@ import { Usuario } from '../../model/usuario';
 import { HttpClient,  HttpHeaders} from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from '../login/auth.service';
+import { AuthService } from '../../login/auth.service';
 import { map, catchError, tap } from 'rxjs/operators';
 import swal from 'sweetalert2';
 import { environment } from 'src/environments/environment';
