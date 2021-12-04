@@ -12,13 +12,13 @@
             <a class="nav-link" routerLink="/pages/inicio">Inicio</a>
           </li>
           <li class="nav-item" *ngIf="authService.isAuthtenticated()">
-            <a class="nav-link" routerLink="/compradores">Compradores</a>
+            <a class="nav-link" routerLink="/pages/compradores">Compradores</a>
           </li>
           <li class="nav-item" *ngIf="authService.isAuthtenticated() && authService.getRol() == 'ROLE_ADMIN'">
-            <a class="nav-link" routerLink="/bonos">Bonos</a>
+            <a class="nav-link" routerLink="/pages/bonos">Bonos</a>
           </li>
           <li class="nav-item" *ngIf="authService.isAuthtenticated() && authService.getRol() == 'ROLE_ADMIN'">
-            <a class="nav-link" routerLink="/productividad">Productividad</a>
+            <a class="nav-link" routerLink="/pages/productividad">Productividad</a>
           </li>
         </ul>
         <form class="d-flex">

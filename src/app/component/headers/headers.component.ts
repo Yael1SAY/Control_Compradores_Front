@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/usuarios/auth.service';
+import { AuthService } from 'src/app/pages/login/auth.service';
 import swal from 'sweetalert2';
-import {LoginComponent} from '../../usuarios/login.component'
+import {LoginComponent} from '../../pages/login/login.component'
 
 @Component({
   selector: 'app-headers',
@@ -22,7 +22,7 @@ export class HeadersComponent implements OnInit {
   let nombre = this.authService.comprador.nombre;
   this.authService.logout();
   swal.fire('Logout', 'Hola ' + nombre + ' has cerrado sesión con éxito', 'success');
-  this.router.navigate(['/login']);
+  this.router.navigate(['/pages/login']);
   }
 
 }

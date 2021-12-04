@@ -16,13 +16,13 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './usuarios/login.component';
-import { FooterComponent } from './footer/footer.component';
-import { CompradoresComponent } from './compradores/compradores.component';
-import { CompradorService } from './compradores/comprador.service';
-import { BonosComponent } from './bonos/bonos.component';
-import { AuthService } from './usuarios/auth.service';
-import { ProductividadComponent } from './productividad/productividad.component';
+import { LoginComponent } from './pages/login/login.component';
+import { FooterComponent } from './component/footer/footer.component';
+import { CompradoresComponent } from './pages/compradores/compradores.component';
+import { CompradorService } from './pages/compradores/comprador.service';
+import { BonosComponent } from './pages/bonos/bonos.component';
+import { AuthService } from './pages/login/auth.service';
+import { ProductividadComponent } from './pages/productividad/productividad.component';
 import { InicioComponent } from '../app/pages/inicio/inicio.component';
 import { HeadersComponent } from '../../src/app/component/headers/headers.component';
 //import { routes } from '../app/pages/pages.routing'
@@ -30,10 +30,10 @@ import { HeadersComponent } from '../../src/app/component/headers/headers.compon
 
 const routes: Routes = [
   {path: '', redirectTo: '/compradores', pathMatch: 'full'},
-  {path: 'compradores', component: CompradoresComponent},
-  {path: 'bonos', component: BonosComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'productividad', component: ProductividadComponent},
+  {path: 'pages/compradores', component: CompradoresComponent},
+  {path: 'pages/bonos', component: BonosComponent},
+  {path: 'pages/login', component: LoginComponent},
+  {path: 'pages/productividad', component: ProductividadComponent},
   {path: 'pages/inicio', component: InicioComponent}
   //{path: 'routes', redirectTo: '/pages', pathMatch: 'full'}
 ]

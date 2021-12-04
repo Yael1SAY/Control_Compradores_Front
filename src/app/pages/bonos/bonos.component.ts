@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompradoresComponent } from '../compradores/compradores.component';
-import { Usuario } from '../model/usuario';
+import { Usuario } from '../../model/usuario';
 
 @Component({
   selector: 'app-bonos',
