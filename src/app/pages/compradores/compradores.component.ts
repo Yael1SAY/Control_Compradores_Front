@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../model/usuario';
-import { CompradorService } from './comprador.service';
+import { CompradorService } from '../../services/empleado.service';
 import { AuthService } from '../../login/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compradores',
-  templateUrl: './compradores.component.html'
+  templateUrl: './compradores.component.html',
+  styleUrls: ['./compradores.component.css']
 })
 export class CompradoresComponent implements OnInit {
 

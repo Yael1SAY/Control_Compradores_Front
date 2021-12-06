@@ -6,13 +6,15 @@ import { ComponentModule } from '../component/component.module';
 import { HeadersComponent } from '../../../src/app/component/headers/headers.component'
 import { RouterModule } from '@angular/router';
 import { routes } from './pages.routing';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 
 @NgModule({
   declarations: [
     InicioComponent,
-    HeadersComponent
+    HeadersComponent,
+    UsuariosComponent
   ],
   imports: [
     CommonModule,

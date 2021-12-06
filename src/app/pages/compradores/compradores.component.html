@@ -1,48 +1,59 @@
 <app-headers></app-headers>
-<div>
-  <h4 class="card-title font-weight-bold">Lista de Compradores</h4>
-</div>
-<hr class="m-t-0 m-b-10" color="red">
-<div class="card">
-  <h5>Compradores</h5>
-  <p-table [value]="compradores" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" 
-  responsiveLayout="scroll" currentPageReportTemplate="{first} to {last} of {totalRecords} entries" 
-  [rowsPerPageOptions]="[10,25,50]" [scrollable]="true" scrollHeight="400px" scrollDirection="both">
-      <ng-template pTemplate="header">
-          <tr>
-            <th style="width:50px">Id</th>
-            <th style="width:50px">Clave</th>
-            <th style="width:100px">Nombre</th>
-            <th style="width:100px">Apellido Paterno</th>
-            <th style="width:100px">Apellido Materno</th>
-            <th style="width:70px">Bonos</th>
-            <th style="width:70px">Eliminar</th>
-            <th style="width:70px">Editar</th>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-comprador>
-          <tr>
-            <td style="width:50px">{{ comprador.idComprador }}</td>
-            <td style="width:50px">{{ comprador.clave }}</td>
-            <td style="width:100px">{{ comprador.nombre }}</td>
-            <td style="width:100px">{{ comprador.apellidoPaterno }}</td>
-            <td style="width:100px">{{ comprador.apellidoMaterno }}</td>
-            <td style="width:70px">
-              <button type="button" name="bonos" class="btn btn-primary btn-sm">Bonos</button>
-            </td>
-            <td style="width:70px">
-              <button type="button" name="edit" class="btn btn-warning btn-sm">Editar</button>
-            </td>
-            <td style="width:70px">
-              <button type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button>
-            </td>
-          </tr>
-      </ng-template>
-      <ng-template pTemplate="paginatorleft">
-          <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
-      </ng-template>
-      <ng-template pTemplate="paginatorright">
-          <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
-      </ng-template>
-  </p-table>
+<P id="titulo">Usuarios</P>
+
+<div class="row" style="padding: 20px;">
+  <div class="colm-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="card">
+          <p-table [value]="compradores" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+            responsiveLayout="scroll" currentPageReportTemplate="{first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10,25,50]" [scrollable]="true" scrollHeight="400px" scrollDirection="both">
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width:30px">Id</th>
+                <th style="width:50px">Usuario</th>
+                <th style="width:100px">Nombre</th>
+                <th style="width:100px">Apellido Paterno</th>
+                <th style="width:100px">Apellido Materno</th>
+                <th style="width:60px">Acciones</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-comprador>
+              <tr>
+                <td style="width:30px">{{ comprador.idComprador }}</td>
+                <td style="width:50px">{{ comprador.clave }}</td>
+                <td style="width:100px">{{ comprador.nombre }}</td>
+                <td style="width:100px">{{ comprador.apellidoPaterno }}</td>
+                <td style="width:100px">{{ comprador.apellidoMaterno }}</td>
+                <td style="width:60px">
+                  <section>
+                    <div class="example-button-row">
+                      <div class="example-flex-container">
+                        <button mat-icon-button pTooltip="Bonos de empleado"
+                        aria-label="Example icon button with a heart icon">
+                        <mat-icon class="iconInaiCss">attach_money</mat-icon>
+                        </button>
+                        <button mat-icon-button color="secondary" pTooltip="Editar empleado"
+                        aria-label="Example icon button with a heart icon">
+                        <mat-icon class="iconInaiCss">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="secondary" pTooltip="Baja empleado" 
+                        aria-label="Example icon button with a heart icon">
+                        <mat-icon class="iconInaiCss">delete_outline</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- <button type="button" name="bonos" class="btn btn-primary btn-sm">Bonos</button>
+                  <button type="button" name="edit" class="btn btn-warning btn-sm">Editar</button>
+                  <button type="button" name="eliminar" class="btn btn-danger btn-sm">Eliminar</button> -->
+                </td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

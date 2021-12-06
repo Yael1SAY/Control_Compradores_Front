@@ -1,30 +1,35 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import {CommonModule} from '@angular/common'
+import {CommonModule} from '@angular/common';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import {AccordionModule} from 'primeng/accordion';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
+import {TooltipModule} from 'primeng/tooltip';
+import {ToastModule} from 'primeng/toast';
+import {RippleModule} from 'primeng/ripple';
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { CompradoresComponent } from './pages/compradores/compradores.component';
-import { CompradorService } from './pages/compradores/comprador.service';
+import { CompradorService } from './services/empleado.service';
 import { BonosComponent } from './pages/bonos/bonos.component';
 import { AuthService } from './login/auth.service';
 import { ProductividadComponent } from './pages/productividad/productividad.component';
 import { InicioComponent } from '../app/pages/inicio/inicio.component';
 import { HeadersComponent } from '../../src/app/component/headers/headers.component';
+import { UsuariosComponent } from '../app/pages/usuarios/usuarios.component';
 
 
 const routes: Routes = [
@@ -33,7 +38,8 @@ const routes: Routes = [
   {path: 'pages/bonos', component: BonosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'pages/productividad', component: ProductividadComponent},
-  {path: 'pages/inicio', component: InicioComponent}
+  {path: 'pages/inicio', component: InicioComponent},
+  {path: 'pages/usuarios', component: UsuariosComponent}
   //{path: 'routes', redirectTo: '/pages', pathMatch: 'full'}
 ]
 
@@ -46,7 +52,8 @@ const routes: Routes = [
     ProductividadComponent,
     InicioComponent,
     HeadersComponent,
-    BonosComponent
+    BonosComponent,
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +70,11 @@ const routes: Routes = [
     MatIconModule,
     MatButtonModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    TooltipModule,
+    ToastModule,
+    RippleModule,
+    MatExpansionModule
   ],
   providers: [CompradorService, AuthService],
   bootstrap: [AppComponent],

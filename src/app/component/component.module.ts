@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeadersComponent } from './headers/headers.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
-
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -10,7 +10,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastModule
   ],
   exports: [
     HeadersComponent

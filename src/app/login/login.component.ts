@@ -3,11 +3,14 @@ import { Usuario } from '../model/usuario'
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import {MessageService} from 'primeng/api';
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
@@ -16,13 +19,16 @@ export class LoginComponent implements OnInit {
 
   hide = true;
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService, private router: Router,
+    private messageService: MessageService, private primengConfig: PrimeNGConfig) {
       this.usuario = new Usuario;
    }
 
   ngOnInit(): void {
+    this.primengConfig.ripple = true;
     if(this.authService.isAuthtenticated()){
-      swal.fire('Login', 'Hola ' + this.authService.comprador.nombreUsuario + ' ya estas autenticado!' , 'info');
+      //swal.fire('Login', 'Hola ' + this.authService.comprador.nombreUsuario + ' ya estas autenticado!' , 'info');
+      this.messageService.add({severity:'success', summary: 'Success', detail: 'Message Content'});
       this.router.navigate(['/clientes']);
     }
   }
@@ -32,25 +38,21 @@ export class LoginComponent implements OnInit {
     console.log();
       //valida que el usuario y password no esten vacias
       if(this.usuario!.nombreUsuario == null || this.usuario!.password == null){
-
         swal.fire('Error Login', 'Username o Password vacios!', 'error');
       }
-      //llama al metodo login del service para autenticarse
       this.authService.login(this.usuario!).subscribe(response => {
-        //el token se conpone de tres secciones 1. el algoritmo y tipo, 2.datos y payload 3.La fima para verificar
-        //let objetoPayload = JSON.parse(atob(response.access_token.split('.')[1]))
-        //console.log(objetoPayload);//Split convierte a un arreglo y separa cada secion despues de un '.'
 
         this.authService.guardarUsuario(response.access_token);
         this.authService.guardarToken(response.access_token);
 
-        let comprador = this.authService.comprador;//es el metodo getter del service y se maneja como atributo
-        //this.router.navigate(['/inicio']);
+        let comprador = this.authService.comprador;
         this.router.navigate(['/pages/inicio']);
-        swal.fire('Login', 'Hola ' + comprador.nombre + ', has iniciado sesión con éxito!', 'success');
+          this.messageService.add({severity:'success', summary: 'Exito', detail: 'Hola ' + comprador.nombre + ', has iniciado sesión con éxito!'});
+        //swal.fire('Login', 'Hola ' + comprador.nombre + ', has iniciado sesión con éxito!', 'success');
         },error => {
           if(error.status == 400){
-            swal.fire('Error Login', 'Usuario o contraseña incorrecta!!!', 'error');
+            //this.toast.showError('Usuario o contraseña incorrecta!!!');
+            //swal.fire('Error Login', 'Usuario o contraseña incorrecta!!!', 'error');
           }
           if(error.status == 0){
             swal.fire("Servicio fuera de linea", 'No es posible conectar al servicio, contacte al administrador','error');
