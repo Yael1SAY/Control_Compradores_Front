@@ -9,6 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CommonModule} from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
 
 import {AccordionModule} from 'primeng/accordion';
 import {TableModule} from 'primeng/table';
@@ -74,7 +75,8 @@ const routes: Routes = [
     TooltipModule,
     ToastModule,
     RippleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [CompradorService, AuthService],
   bootstrap: [AppComponent],

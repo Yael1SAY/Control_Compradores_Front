@@ -25,26 +25,24 @@
             <a class="nav-link" routerLink="/pages/productividad">Productividad</a>
           </li>
         </ul>
-        <form class="d-flex">
-          <ul class="navbar-nav mr-right">
-            <!-- <li *ngIf="!authService.isAuthtenticated()">
-              <a [routerLink]="['/login']" class="btn btn-outline-primary">Iniciar sesión</a>
-            </li> -->
-            <li *ngIf="authService.isAuthtenticated()" class="dropdown">
-              <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                {{authService.comprador.nombre}} {{authService.comprador.apellidoPaterno}}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <button (click)='logout()' class="dropdown-item" type="submit">Cerrar sesión</button>
-              </div>
-            </li>
-            <li *ngIf="authService.isAuthtenticated()" class="dropdown">
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <button (click)='showToast()' class="dropdown-item" type="submit">TAOAST</button>
-              </div>
-            </li>
-          </ul>
+        <form class="d-flex" style="padding-right: 5%;">
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon class="iconUsarioCss">person</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon class="iconCss">person</mat-icon>
+              <span>{{authService.comprador.nombre}} {{authService.comprador.apellidoPaterno}}</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon class="iconCss">how_to_reg</mat-icon>
+              <span>{{authService.comprador.roles[0]}}</span>
+            </button>
+            <button mat-menu-item (click)='logout()'>
+              <mat-icon class="iconCss">exit_to_app</mat-icon>
+              <span>Cerrar sesión</span>
+            </button>
+          </mat-menu>
         </form>
       </div>
     </div>

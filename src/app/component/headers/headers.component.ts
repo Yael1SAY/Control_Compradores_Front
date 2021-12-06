@@ -12,7 +12,8 @@ import { PrimeNGConfig } from 'primeng/api';
   providers: [MessageService]
 })
 export class HeadersComponent implements OnInit {
-  title: string = "Home"
+  title: string = "Home";
+  usuario: any;
   constructor(public authService: AuthService, private router: Router,
     private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
 
@@ -20,6 +21,8 @@ export class HeadersComponent implements OnInit {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    this.usuario = this.authService.comprador;
+    console.log("usuario: ", this.usuario);
   }
 
   showToast(){
@@ -29,8 +32,8 @@ export class HeadersComponent implements OnInit {
   logout():void{
   let nombre = this.authService.comprador.nombre;
   this.authService.logout();
-  this.messageService.add({severity:'success', summary: 'Success', detail: 'Message Content'}); 
-  //swal.fire('Logout', 'Hola ' + nombre + ' has cerrado sesión con éxito', 'success');
+  //this.messageService.add({severity:'success', summary: 'Success', detail: 'Message Content'}); 
+  swal.fire('Logout', 'Hola ' + nombre + ' has cerrado sesión con éxito', 'success');
   this.router.navigate(['/login']);
   }
 
