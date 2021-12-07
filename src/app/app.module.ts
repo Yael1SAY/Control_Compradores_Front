@@ -23,7 +23,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { CompradoresComponent } from './pages/compradores/compradores.component';
+import { TrabajadoresComponent } from './pages/trabajadores/trabajadores.component';
 import { CompradorService } from './services/empleado.service';
 import { BonosComponent } from './pages/bonos/bonos.component';
 import { AuthService } from './login/auth.service';
@@ -35,7 +35,7 @@ import { UsuariosComponent } from '../app/pages/usuarios/usuarios.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'pages/compradores', pathMatch: 'full'},
-  {path: 'pages/compradores', component: CompradoresComponent},
+  {path: 'pages/trabajadores', component: TrabajadoresComponent},
   {path: 'pages/bonos', component: BonosComponent},
   {path: 'login', component: LoginComponent},
   {path: 'pages/productividad', component: ProductividadComponent},
@@ -49,7 +49,7 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     FooterComponent,
-    CompradoresComponent,
+    TrabajadoresComponent,
     ProductividadComponent,
     InicioComponent,
     HeadersComponent,

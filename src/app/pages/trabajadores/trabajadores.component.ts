@@ -6,10 +6,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compradores',
-  templateUrl: './compradores.component.html',
-  styleUrls: ['./compradores.component.css']
+  templateUrl: './trabajadores.component.html',
+  styleUrls: ['./trabajadores.component.css']
 })
-export class CompradoresComponent implements OnInit {
+export class TrabajadoresComponent implements OnInit {
 
   compradores: Usuario[] = [];
   first = 0;

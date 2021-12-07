@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CompradoresComponent } from '../compradores/compradores.component';
 import { Usuario } from '../../model/usuario';
 
 @Component({

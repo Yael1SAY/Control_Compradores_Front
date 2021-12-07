@@ -16,7 +16,7 @@
             <a class="nav-link" routerLink="/pages/usuarios">Usuarios</a>
           </li>
           <li class="nav-item" *ngIf="authService.isAuthtenticated()">
-            <a class="nav-link" routerLink="/pages/compradores">Compradores</a>
+            <a class="nav-link" routerLink="/pages/trabajadores">Trabajadores</a>
           </li>
           <li class="nav-item" *ngIf="authService.isAuthtenticated() && authService.getRol() == 'ROLE_ADMIN'">
             <a class="nav-link" routerLink="/pages/bonos">Bonos</a>
