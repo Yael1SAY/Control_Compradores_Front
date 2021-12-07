@@ -1,21 +1,20 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Usuario } from '../model/usuario';
-import { HttpClient,  HttpHeaders} from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
 import { Router } from '@angular/router';
-import { AuthService } from '../login/auth.service';
-import { map, catchError, tap } from 'rxjs/operators';
-import swal from 'sweetalert2';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../login/auth.service';
+import swal from 'sweetalert2';
 
 const URL = environment.url;
 
 @Injectable({
   providedIn: 'root'
 })
-export class CompradorService {
+export class TrabajadoresService {
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
-
+  
   constructor(private http: HttpClient, private router: Router, private authService: AuthService) { }
 
   private agregarAuthorizationHeader(){
@@ -26,25 +25,8 @@ export class CompradorService {
     return this.httpHeader;
   }
 
-  private isNoAutorizado(e: any): boolean{
-    if(e.status==401){//realiza la validacion cuando no se a autenticado
-      if(this.authService.isAuthtenticated!){
-        this.authService.logout();
-      }
-      swal.fire('Acceso Denegado','Se requiere iniciar sesión','warning')
-      this.router.navigate(['/login'])
-      return true;
-    }
-    if(e.status==403){//Acceso denegado por el tipo de rol
-      swal.fire('Acceso Denegado','Hola ' + this.authService.comprador.nombre + ' no tienes acceso a este recurso','warning')
-      this.router.navigate(['/clientes'])
-      return true;
-    }
-    return false;
-  }
-
-  obtenerCompradores(rol: string): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(`${URL}obtenerUsuarios`, {headers: this.agregarAuthorizationHeader()})
+  obtenerTrabajadores(rol: string): Observable<any[]>{
+    return this.http.get<any[]>(`${URL}empleado/obtenerEmpleados`, {headers: this.agregarAuthorizationHeader()})
     .pipe(
       catchError(e =>{
         if(e.status==0){
@@ -61,4 +43,5 @@ export class CompradorService {
       })
     );
   }
+
 }

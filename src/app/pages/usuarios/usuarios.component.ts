@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/auth.service';
 import { Usuario } from 'src/app/model/usuario';
-import { CompradorService } from 'src/app/services/empleado.service';
+import { UsarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -20,7 +20,7 @@ export class UsuariosComponent implements OnInit {
   totalElements: number | undefined;
   pageSize: Number = 40;
 
-  constructor(private compradorService: CompradorService, private authService: AuthService,
+  constructor(private compradorService: UsarioService, private authService: AuthService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -37,7 +37,7 @@ export class UsuariosComponent implements OnInit {
   }
 
   BuscarUsuarios() {
-    this.compradorService.obtenerCompradores(this.authService.getRol()).subscribe(
+    this.compradorService.obtenerUsarios(this.authService.getRol()).subscribe(
       usuarios => this.usuarios = usuarios
     );
   }

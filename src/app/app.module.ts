@@ -24,7 +24,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { TrabajadoresComponent } from './pages/trabajadores/trabajadores.component';
-import { CompradorService } from './services/empleado.service';
+import { UsarioService } from './services/usuario.service';
 import { BonosComponent } from './pages/bonos/bonos.component';
 import { AuthService } from './login/auth.service';
 import { ProductividadComponent } from './pages/productividad/productividad.component';
@@ -78,7 +78,7 @@ const routes: Routes = [
     MatExpansionModule,
     MatMenuModule
   ],
-  providers: [CompradorService, AuthService],
+  providers: [UsarioService, AuthService],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
