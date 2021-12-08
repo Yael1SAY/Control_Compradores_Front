@@ -40,9 +40,10 @@ export class TrabajadoresComponent implements OnInit {
   }
 
   BuscarTrabajador() {
-    this.trabajadoresService.obtenerTrabajadores(this.authService.getRol()).subscribe(
-      trabajadores => this.trabajadores = trabajadores
-    );
+    this.trabajadoresService.obtenerTrabajadores(this.authService.getRol()).subscribe(trabajadores =>{
+      this.trabajadores = trabajadores;
+      console.log(this.trabajadores);
+    });
   }
 
   buscarPorPagina(event: any) {
