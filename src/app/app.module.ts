@@ -11,6 +11,7 @@ import {CommonModule} from '@angular/common';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import {AccordionModule} from 'primeng/accordion';
 import {TableModule} from 'primeng/table';
@@ -32,6 +33,7 @@ import { ProductividadComponent } from './pages/productividad/productividad.comp
 import { InicioComponent } from '../app/pages/inicio/inicio.component';
 import { HeadersComponent } from '../../src/app/component/headers/headers.component';
 import { UsuariosComponent } from '../app/pages/usuarios/usuarios.component';
+import { NuevoUsuarioComponent } from '../app/pages/nuevo-usuario/nuevo-usuario.component';
 
 
 const routes: Routes = [
@@ -55,7 +57,8 @@ const routes: Routes = [
     InicioComponent,
     HeadersComponent,
     BonosComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    NuevoUsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +81,8 @@ const routes: Routes = [
     RippleModule,
     MatExpansionModule,
     MatMenuModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [UsarioService, AuthService],
   bootstrap: [AppComponent],

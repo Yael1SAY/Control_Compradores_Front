@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Registrar nueva cuenta</h1>
+<div mat-dialog-content>
+  <mat-form-field class="example-full-width" appearance="outline">
+    <mat-label>Ingrese su contraseña</mat-label>
+    <input matInput placeholder="password" type="password" required
+      id="password" name="password" >
+    <button mat-icon-button matSuffix>
+    </button>
+    <mat-error></mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial>Ok</button>
+</div>
