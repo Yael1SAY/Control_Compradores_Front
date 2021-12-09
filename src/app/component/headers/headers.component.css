@@ -3,9 +3,17 @@
 }
 
 .iconUsarioCss{
-    color: aliceblue; 
+    color: #f16d00; 
     font-size: 30px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    padding-right: 15px;
+}
+
+.titulo {
+    color: darkslategray;
+    font-size: 25px;
+}
+
+.subtitulo{
+    color: #f16d00;
+    font-size: 25;
 }

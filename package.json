@@ -24,6 +24,7 @@
     "bootstrap": "^5.0.0-beta1",
     "bootstrap-icons": "^1.7.2",
     "jquery": "^3.5.1",
+    "menuitem": "0.0.5",
     "ngx-spinner": "^11.0.2",
     "popper.js": "^1.16.1",
     "primeflex": "2.0.0",

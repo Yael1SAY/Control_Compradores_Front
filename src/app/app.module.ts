@@ -21,6 +21,8 @@ import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SidebarModule} from 'primeng/sidebar';
+import {MenubarModule} from 'primeng/menubar';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -82,7 +84,9 @@ const routes: Routes = [
     MatExpansionModule,
     MatMenuModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    SidebarModule,
+    MenubarModule
   ],
   providers: [UsarioService, AuthService],
   bootstrap: [AppComponent],

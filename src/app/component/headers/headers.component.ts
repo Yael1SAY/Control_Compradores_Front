@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/login/auth.service';
 import swal from 'sweetalert2';
-import {MessageService} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -14,6 +14,17 @@ import { PrimeNGConfig } from 'primeng/api';
 export class HeadersComponent implements OnInit {
   title: string = "Home";
   usuario: any;
+
+  visibleSidebar1: any;
+    
+    visibleSidebar2: any;
+    
+    visibleSidebar3: any;
+    
+    visibleSidebar4: any;
+    
+    visibleSidebar5: any;
+
   constructor(public authService: AuthService, private router: Router,
     private messageService: MessageService, private primengConfig: PrimeNGConfig) {}
 
@@ -23,6 +34,7 @@ export class HeadersComponent implements OnInit {
     this.primengConfig.ripple = true;
     this.usuario = this.authService.comprador;
     console.log("usuario: ", this.usuario);
+
   }
 
   showToast(){
