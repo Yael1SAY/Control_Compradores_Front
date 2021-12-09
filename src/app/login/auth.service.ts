@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../model/usuario'
+import { environment } from 'src/environments/environment';
+
+const URL = environment.url;
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +36,7 @@ export class AuthService {
   }
 
   login(comprador: Usuario): Observable<any> {
-    const urlEndPoint = 'http://localhost:8080/oauth/token';
+    //const urlEndPoint = 'http://localhost:8080/oauth/token';
     const credenciales = btoa('angularapp' + ':' + '12345');
     const httpHeaders = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded',
@@ -44,7 +47,7 @@ export class AuthService {
     params.set('username', comprador.nombreUsuario);
     params.set('password', comprador.password);
 
-    return this.http.post<any>(urlEndPoint, params.toString(), { headers: httpHeaders });
+    return this.http.post<any>(`${URL}oauth/token`, params.toString(), { headers: httpHeaders });
   }
 
   guardarUsuario(accessToken: string): void {
@@ -55,6 +58,7 @@ export class AuthService {
     this._usuario.apellidoPaterno = payload.apellidoPaterno;
     this._usuario.apellidoMaterno = payload.apellidoMaterno;
     this._usuario.nombreUsuario = payload.user_name;
+    this._usuario.email = payload.email;
     for (let rol in payload.authorities) {
       listRol.push(payload.authorities[rol])
     }
