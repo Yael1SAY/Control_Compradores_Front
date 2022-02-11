@@ -12,6 +12,8 @@ export class InicioComponent implements OnInit {
   basicData: any;
   basicOptions: any;
 
+  idImagen = "../../../assets/Images/spider-man.jpg";
+
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
@@ -62,6 +64,10 @@ export class InicioComponent implements OnInit {
             }
         }
     };
+  }
+
+  cambiarImagen(){
+      console.log("Cambiando imagen de perfil")
   }
 
 }

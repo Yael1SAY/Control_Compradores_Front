@@ -90,4 +90,7 @@ export class UsuariosComponent implements OnInit {
     return this.usuarios ? this.first === 0 : true;
   }
 
+  mostrar(){
+    console.log("Mostrar")
+  }
 }
