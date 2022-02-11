@@ -46,7 +46,7 @@ export class AuthService {
     params.set('grant_type', 'password');
     params.set('username', comprador.nombreUsuario);
     params.set('password', comprador.password);
-
+    console.log("parametros: ", params.toString())
     return this.http.post<any>(`${URL}oauth/token`, params.toString(), { headers: httpHeaders });
   }
 

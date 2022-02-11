@@ -23,6 +23,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SidebarModule} from 'primeng/sidebar';
 import {MenubarModule} from 'primeng/menubar';
+import {ChartModule} from 'primeng/chart';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -86,7 +87,8 @@ const routes: Routes = [
     MatSelectModule,
     MatDialogModule,
     SidebarModule,
-    MenubarModule
+    MenubarModule,
+    ChartModule
   ],
   providers: [UsarioService, AuthService],
   bootstrap: [AppComponent],

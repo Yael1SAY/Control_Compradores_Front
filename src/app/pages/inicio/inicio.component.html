@@ -1,6 +1,7 @@
 <app-headers></app-headers>
 
 <div class="row" style="padding: 20px; text-align: center;">
+    <p id="titulo">Inicio</p>
     <div class="col-4">
         <div class="card" class="shadow p-3 mb-5 bg-body rounded">
             <div class="card-title">
@@ -20,7 +21,12 @@
         </div>
     </div>
     <div class="col-8">
-        <div class="card" class="shadow p-3 mb-5 bg-body rounded"></div>
+        <div class="card" class="shadow p-3 mb-5 bg-body rounded">
+            <p id="sub-titulo">Mi productividad</p>
+            <div class="card">
+                <p-chart type="bar" [data]="basicData" [options]="basicOptions"></p-chart>
+            </div>
+        </div>
     </div>
 
 </div>
