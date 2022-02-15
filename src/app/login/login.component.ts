@@ -11,7 +11,7 @@ import { NuevoUsuarioComponent } from '../pages/nuevo-usuario/nuevo-usuario.comp
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['../../assets/styles/login.css'],
+  styleUrls: ['./login.component.css'],
   providers: [MessageService]
 })
 export class LoginComponent implements OnInit {

@@ -1,21 +1,19 @@
-#FROM node:15 as node
-#WORKDIR /app
-#COPY ./ /app/
-##RUN npm set audit false
-#RUN npm cache clean -f
-#RUN npm install -f
-#RUN npm run build
-#
-#FROM nginx:1.21.6
-#COPY --from=node /app/dist/control-compradores /usr/share/nginx/html
+#Primera Etapa
+FROM node:16.14-alpine as build-step
 
+RUN mkdir -p /app
 
-FROM nginx:alpine
- # use a volume is mor efficient and speed that filesystem
-VOLUME /tmp
-RUN rm -rf /usr/share/nginx/html/*
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY dist/control-compradores /usr/share/nginx/html
-#expose app and 80 for nginx app
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+WORKDIR /app
+
+COPY package.json /app
+
+RUN npm install
+
+COPY . /app
+
+RUN npm run build --prod
+
+#Segunda Etapa
+FROM nginx:1.17.1-alpine
+	#Si estas utilizando otra aplicacion cambia PokeApp por el nombre de tu app
+COPY --from=build-step /app/dist/control-compradores /usr/share/nginx/html
